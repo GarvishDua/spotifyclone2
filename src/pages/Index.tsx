@@ -4,6 +4,7 @@ import { Sidebar } from '@/components/Sidebar';
 import { HomeView } from '@/components/HomeView';
 import { PlaylistView } from '@/components/PlaylistView';
 import { Player } from '@/components/Player';
+import { MobileNav } from '@/components/MobileNav';
 import { playlists } from '@/data/musicData';
 
 const Index = () => {
@@ -29,6 +30,7 @@ const Index = () => {
             <HomeView onPlaylistSelect={handlePlaylistSelect} />
           )}
         </div>
+        <MobileNav />
         <Player />
       </div>
     </PlayerProvider>

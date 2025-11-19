@@ -1,6 +1,7 @@
 import { Play, Clock } from 'lucide-react';
 import { Playlist } from '@/data/musicData';
 import { usePlayer } from '@/contexts/PlayerContext';
+import { TopNav } from './TopNav';
 
 interface PlaylistViewProps {
   playlist: Playlist;
@@ -21,17 +22,19 @@ export const PlaylistView = ({ playlist }: PlaylistViewProps) => {
 
   return (
     <div className="flex-1 overflow-y-auto">
+      <TopNav />
+      
       {/* Playlist Header */}
-      <div className="bg-gradient-to-b from-primary/20 to-background p-8 flex items-end gap-6">
+      <div className="bg-gradient-to-b from-primary/20 to-background p-4 md:p-8 flex flex-col md:flex-row items-start md:items-end gap-4 md:gap-6">
         <img
           src={playlist.coverUrl}
           alt={playlist.name}
-          className="w-48 h-48 shadow-2xl"
+          className="w-32 h-32 md:w-48 md:h-48 shadow-2xl"
         />
         <div>
-          <p className="text-sm font-semibold uppercase mb-2">Playlist</p>
-          <h1 className="text-6xl font-bold mb-6">{playlist.name}</h1>
-          <p className="text-muted-foreground mb-2">{playlist.description}</p>
+          <p className="text-xs md:text-sm font-semibold uppercase mb-2">Playlist</p>
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">{playlist.name}</h1>
+          <p className="text-muted-foreground mb-2 text-sm md:text-base">{playlist.description}</p>
           <p className="text-sm">
             <span className="font-semibold">{playlist.songs.length} songs</span>
           </p>
@@ -39,17 +42,17 @@ export const PlaylistView = ({ playlist }: PlaylistViewProps) => {
       </div>
 
       {/* Controls */}
-      <div className="p-8">
+      <div className="p-4 md:p-8">
         <button
           onClick={handlePlayAll}
-          className="bg-primary text-primary-foreground rounded-full p-4 hover:scale-105 transition-transform shadow-lg"
+          className="bg-primary text-primary-foreground rounded-full p-3 md:p-4 hover:scale-105 transition-transform shadow-lg"
         >
-          <Play size={28} fill="currentColor" />
+          <Play size={24} className="md:w-7 md:h-7" fill="currentColor" />
         </button>
       </div>
 
-      {/* Songs List */}
-      <div className="px-8 pb-8">
+      {/* Songs List - Desktop */}
+      <div className="px-4 md:px-8 pb-8 hidden md:block">
         <div className="grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-4 py-2 text-sm text-muted-foreground border-b border-border mb-2">
           <div>#</div>
           <div>Title</div>
@@ -89,6 +92,32 @@ export const PlaylistView = ({ playlist }: PlaylistViewProps) => {
               <div className="flex items-center justify-end text-muted-foreground">
                 {song.duration}
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Songs List - Mobile */}
+      <div className="px-4 pb-32 md:hidden">
+        <div className="space-y-2">
+          {playlist.songs.map((song, index) => (
+            <div
+              key={song.id}
+              onClick={() => handlePlaySong(index)}
+              className={`flex items-center gap-3 p-3 rounded-md ${
+                currentSong?.id === song.id ? 'bg-hover text-primary' : ''
+              }`}
+            >
+              <img
+                src={song.coverUrl}
+                alt={song.title}
+                className="w-12 h-12 rounded"
+              />
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold truncate text-sm">{song.title}</p>
+                <p className="text-xs text-muted-foreground truncate">{song.artist}</p>
+              </div>
+              <span className="text-xs text-muted-foreground">{song.duration}</span>
             </div>
           ))}
         </div>
