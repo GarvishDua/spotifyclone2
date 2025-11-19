@@ -1,13 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { PlayerProvider } from '@/contexts/PlayerContext';
+import { Sidebar } from '@/components/Sidebar';
+import { HomeView } from '@/components/HomeView';
+import { PlaylistView } from '@/components/PlaylistView';
+import { Player } from '@/components/Player';
+import { playlists } from '@/data/musicData';
 
 const Index = () => {
+  const [selectedPlaylist, setSelectedPlaylist] = useState<string | null>(null);
+
+  const handlePlaylistSelect = (playlistId: string) => {
+    setSelectedPlaylist(playlistId);
+  };
+
+  const currentPlaylist = playlists.find(p => p.id === selectedPlaylist);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <PlayerProvider>
+      <div className="h-screen flex flex-col bg-background text-foreground">
+        <div className="flex flex-1 overflow-hidden">
+          <Sidebar 
+            onPlaylistSelect={handlePlaylistSelect}
+            selectedPlaylist={selectedPlaylist}
+          />
+          {currentPlaylist ? (
+            <PlaylistView playlist={currentPlaylist} />
+          ) : (
+            <HomeView onPlaylistSelect={handlePlaylistSelect} />
+          )}
+        </div>
+        <Player />
       </div>
-    </div>
+    </PlayerProvider>
   );
 };
 
