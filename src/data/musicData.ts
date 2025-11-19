@@ -1,0 +1,151 @@
+export interface Song {
+  id: string;
+  title: string;
+  artist: string;
+  album: string;
+  duration: string;
+  coverUrl: string;
+  audioUrl: string;
+}
+
+export interface Playlist {
+  id: string;
+  name: string;
+  description: string;
+  coverUrl: string;
+  songs: Song[];
+}
+
+export const playlists: Playlist[] = [
+  {
+    id: "1",
+    name: "Bollywood Hits 2024",
+    description: "Latest chartbusters from Bollywood",
+    coverUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop",
+    songs: [
+      {
+        id: "s1",
+        title: "Dil Diyan Gallan",
+        artist: "Atif Aslam",
+        album: "Tiger Zinda Hai",
+        duration: "4:23",
+        coverUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      },
+      {
+        id: "s2",
+        title: "Kesariya",
+        artist: "Arijit Singh",
+        album: "Brahmastra",
+        duration: "4:28",
+        coverUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      },
+      {
+        id: "s3",
+        title: "Apna Bana Le",
+        artist: "Arijit Singh",
+        album: "Bhediya",
+        duration: "4:15",
+        coverUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      },
+      {
+        id: "s4",
+        title: "Raatan Lambiyan",
+        artist: "Jubin Nautiyal",
+        album: "Shershaah",
+        duration: "3:58",
+        coverUrl: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+      }
+    ]
+  },
+  {
+    id: "2",
+    name: "Romantic Bollywood",
+    description: "Love songs that touch your heart",
+    coverUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop",
+    songs: [
+      {
+        id: "s5",
+        title: "Tum Hi Ho",
+        artist: "Arijit Singh",
+        album: "Aashiqui 2",
+        duration: "4:22",
+        coverUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+      },
+      {
+        id: "s6",
+        title: "Tera Ban Jaunga",
+        artist: "Akhil Sachdeva",
+        album: "Kabir Singh",
+        duration: "3:56",
+        coverUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+      },
+      {
+        id: "s7",
+        title: "Pehla Nasha",
+        artist: "Udit Narayan",
+        album: "Jo Jeeta Wohi Sikandar",
+        duration: "5:40",
+        coverUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
+      }
+    ]
+  },
+  {
+    id: "3",
+    name: "Party Anthems",
+    description: "High energy tracks to keep the party going",
+    coverUrl: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop",
+    songs: [
+      {
+        id: "s8",
+        title: "Balam Pichkari",
+        artist: "Shalmali Kholgade",
+        album: "Yeh Jawaani Hai Deewani",
+        duration: "4:34",
+        coverUrl: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"
+      },
+      {
+        id: "s9",
+        title: "Gallan Goodiyaan",
+        artist: "Yashita Sharma",
+        album: "Dil Dhadakne Do",
+        duration: "3:06",
+        coverUrl: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      }
+    ]
+  },
+  {
+    id: "4",
+    name: "90s Bollywood Gold",
+    description: "Timeless classics from the golden era",
+    coverUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop",
+    songs: [
+      {
+        id: "s10",
+        title: "Chaiyya Chaiyya",
+        artist: "Sukhwinder Singh",
+        album: "Dil Se",
+        duration: "6:25",
+        coverUrl: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      },
+      {
+        id: "s11",
+        title: "Kuch Kuch Hota Hai",
+        artist: "Udit Narayan",
+        album: "Kuch Kuch Hota Hai",
+        duration: "5:15",
+        coverUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop",
+        audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+      }
+    ]
+  }
+];
